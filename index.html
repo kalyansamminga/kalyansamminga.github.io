@@ -6,7 +6,6 @@
   <title>Kalyan Samminga — Product Manager</title>
   <meta name="description" content="Portfolio of Kalyan Samminga — Product Manager specializing in AI Products, B2B SaaS, and Supply Chain & Logistics." />
 
-  <!-- Fonts: swap these out later if you want a different feel -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -15,9 +14,6 @@
   />
 
   <style>
-    /* =========================================================
-       DESIGN TOKENS — edit these to retheme the whole site
-       ========================================================= */
     :root {
       --bg: #f6f4ef;
       --bg-elevated: #ffffff;
@@ -25,6 +21,7 @@
       --ink-muted: #6b6b66;
       --rule: #e3dfd5;
       --accent: #c8553d;
+      --accent-soft: rgba(200, 85, 61, 0.08);
 
       --font-display: "Fraunces", Georgia, serif;
       --font-body: "Geist", system-ui, sans-serif;
@@ -33,9 +30,6 @@
       --pad-x: clamp(1.25rem, 4vw, 2.5rem);
     }
 
-    /* =========================================================
-       BASE
-       ========================================================= */
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -43,7 +37,7 @@
       background: var(--bg);
       color: var(--ink);
       font-family: var(--font-body);
-      font-size: 17px;
+      font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
@@ -57,14 +51,27 @@
       padding-right: var(--pad-x);
     }
 
-    /* =========================================================
-       NAV
-       ========================================================= */
+    /* FADE IN */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .fade-up:nth-child(1) { animation-delay: 0.05s; }
+    .fade-up:nth-child(2) { animation-delay: 0.15s; }
+    .fade-up:nth-child(3) { animation-delay: 0.25s; }
+    .fade-up:nth-child(4) { animation-delay: 0.35s; }
+    .fade-up:nth-child(5) { animation-delay: 0.45s; }
+
+    /* NAV */
     header.nav {
       position: sticky;
       top: 0;
-      background: color-mix(in srgb, var(--bg) 85%, transparent);
-      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--rule);
       z-index: 10;
     }
@@ -77,135 +84,256 @@
     .logo {
       font-family: var(--font-display);
       font-weight: 500;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       letter-spacing: -0.01em;
     }
     .nav-links {
       display: flex;
       gap: 1.75rem;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--ink-muted);
     }
+    .nav-links a { transition: color 0.2s; }
     .nav-links a:hover { color: var(--ink); }
 
-    /* =========================================================
-       HERO
-       ========================================================= */
+    /* HERO */
     .hero {
-      padding: clamp(4rem, 12vw, 8rem) 0 clamp(3rem, 8vw, 6rem);
+      padding: clamp(3.5rem, 10vw, 6.5rem) 0 clamp(3rem, 7vw, 5rem);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      background: var(--bg-elevated);
+      border: 1px solid var(--rule);
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      margin-bottom: 1.75rem;
+      letter-spacing: 0.01em;
+    }
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      background: #3dba6e;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.6; transform: scale(0.85); }
     }
     .hero h1 {
       font-family: var(--font-display);
       font-weight: 400;
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin: 0 0 1.5rem;
-      max-width: 18ch;
+      font-size: clamp(2.6rem, 5.5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      margin: 0 0 1.25rem;
     }
     .hero h1 em {
       font-style: italic;
       color: var(--accent);
     }
-    .hero p {
-      font-size: 1.15rem;
+    .hero-bio {
+      font-size: 1.05rem;
       color: var(--ink-muted);
-      max-width: 50ch;
+      max-width: 52ch;
       margin: 0 0 2rem;
+      line-height: 1.7;
     }
-    .hero-meta {
+    .hero-ctas {
       display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      color: var(--ink-muted);
-      border-top: 1px solid var(--rule);
-      padding-top: 1.25rem;
-      max-width: 40ch;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
     }
-    .hero-meta strong {
-      display: block;
-      color: var(--ink);
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--ink);
+      color: #fff;
+      border-radius: 6px;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      margin-bottom: 0.15rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #2d2d2d; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      background: transparent;
+      color: var(--ink-muted);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.9rem;
+      transition: color 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { color: var(--ink); border-color: var(--ink-muted); transform: translateY(-1px); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+    .stat-num {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
     }
 
-    /* =========================================================
-       SECTIONS
-       ========================================================= */
+    /* SECTIONS */
     section {
       padding: clamp(3rem, 6vw, 5rem) 0;
       border-top: 1px solid var(--rule);
     }
     .section-label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink-muted);
-      margin: 0 0 2rem;
+      margin: 0 0 1.75rem;
     }
     h2 {
       font-family: var(--font-display);
       font-weight: 400;
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      line-height: 1.15;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      line-height: 1.2;
       margin: 0 0 1.5rem;
       letter-spacing: -0.015em;
     }
 
-    /* About */
+    /* ABOUT */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 2rem;
     }
     @media (min-width: 720px) {
-      .about-grid { grid-template-columns: 1fr 1.4fr; gap: 4rem; }
+      .about-grid { grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start; }
     }
-    .about-grid p { margin: 0 0 1rem; }
+    .about-grid h2 { margin-bottom: 0; }
+    .about-copy p {
+      margin: 0 0 1rem;
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .about-copy p strong { color: var(--ink); font-weight: 500; }
 
-    /* Work */
-    .projects {
-      display: grid;
-      gap: 0;
-    }
+    /* WORK */
+    .projects { display: grid; gap: 0; }
     .project {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0.5rem 2rem;
-      padding: 1.75rem 0;
+      gap: 0.4rem 2rem;
+      padding: 1.5rem 0;
       border-top: 1px solid var(--rule);
-      transition: padding 0.3s ease;
+      transition: padding-left 0.25s ease, background 0.2s;
+      border-radius: 4px;
     }
     .project:last-child { border-bottom: 1px solid var(--rule); }
-    .project:hover { padding-left: 0.75rem; }
+    .project:hover { padding-left: 0.6rem; }
     @media (min-width: 720px) {
       .project {
-        grid-template-columns: 4rem 1fr 1fr 6rem;
+        grid-template-columns: 3.5rem 1fr 1.2fr 5rem;
         align-items: baseline;
       }
     }
     .project-num {
       font-family: var(--font-display);
       color: var(--ink-muted);
-      font-size: 0.95rem;
+      font-size: 0.85rem;
+      opacity: 0.6;
     }
     .project-title {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.15rem;
       font-weight: 500;
     }
-    .project-desc { color: var(--ink-muted); font-size: 0.95rem; }
-    .project-year { color: var(--ink-muted); font-size: 0.9rem; }
+    .project-desc { color: var(--ink-muted); font-size: 0.88rem; line-height: 1.6; }
+    .project-year { color: var(--ink-muted); font-size: 0.85rem; text-align: right; }
 
-    /* Contact */
-    .contact h2 { max-width: 18ch; }
+    /* AI TOOLS */
+    .ai-tools-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    @media (min-width: 720px) {
+      .ai-tools-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .ai-tool-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .ai-tool-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+      transform: translateY(-3px);
+    }
+    .ai-tool-card-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .ai-tool-card-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .ai-tool-card-desc {
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+      flex: 1;
+      line-height: 1.6;
+    }
+    .ai-tool-card-link {
+      font-size: 0.82rem;
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      align-self: flex-start;
+      margin-top: 0.75rem;
+      transition: opacity 0.2s;
+    }
+    .ai-tool-card:hover .ai-tool-card-link { opacity: 0.75; }
+
+    /* CONTACT */
+    .contact h2 { max-width: 20ch; }
     .contact-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 1.25rem;
       margin-top: 1.5rem;
     }
     .contact-links a {
+      font-size: 0.95rem;
       border-bottom: 1px solid var(--ink);
       padding-bottom: 2px;
       transition: color 0.2s, border-color 0.2s;
@@ -215,64 +343,14 @@
       border-color: var(--accent);
     }
 
-    /* AI Tools */
-    .ai-tools-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-      margin-top: 2.5rem;
-    }
-    @media (min-width: 720px) {
-      .ai-tools-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    .ai-tool-card {
-      background: var(--bg-elevated);
-      border: 1px solid var(--rule);
-      border-radius: 10px;
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-    }
-    .ai-tool-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-      transform: translateY(-2px);
-    }
-    .ai-tool-card-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 500;
-    }
-    .ai-tool-card-title {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--ink);
-    }
-    .ai-tool-card-desc {
-      font-size: 0.9rem;
-      color: var(--ink-muted);
-      flex: 1;
-    }
-    .ai-tool-card-link {
-      font-size: 0.85rem;
-      color: var(--accent);
-      border-bottom: 1px solid var(--accent);
-      padding-bottom: 1px;
-      align-self: flex-start;
-      margin-top: 0.5rem;
-    }
-
-    /* Footer */
+    /* FOOTER */
     footer {
       padding: 2rem 0 3rem;
       border-top: 1px solid var(--rule);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--ink-muted);
+    }
+    .footer-inner {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
@@ -282,7 +360,7 @@
 </head>
 
 <body>
-  <!-- ========== NAV ========== -->
+  <!-- NAV -->
   <header class="nav">
     <div class="wrap nav-inner">
       <a href="#top" class="logo">Kalyan Samminga</a>
@@ -296,50 +374,72 @@
   </header>
 
   <main id="top">
-    <!-- ========== HERO ========== -->
+    <!-- HERO -->
     <section class="hero" style="border-top: none;">
       <div class="wrap">
-        <h1>
-          Product Manager working on AI products for enterprise logistics and B2B SaaS. I spend most of my time figuring out where software gets in the way of how people actually work — and trying to fix that.
+
+        <div class="hero-badge fade-up">
+          <span class="badge-dot"></span>
+          Open to new opportunities
+        </div>
+
+        <h1 class="fade-up">
+          Kalyan<br><em>Samminga.</em>
         </h1>
-        <p>
-          8+ years translating complex supply chain and finance problems into measurable product outcomes. Currently driving AI product strategy for fleet management at UPS Supply Chain Solutions.
+
+        <p class="hero-bio fade-up">
+          Product Manager working on AI products for enterprise logistics and B2B SaaS. I spend most of my time figuring out where software gets in the way of how people actually work — and trying to fix that.
         </p>
-        <div class="hero-meta">
+
+        <div class="hero-ctas fade-up">
+          <a href="#work" class="btn-primary">View Work →</a>
+          <a href="#contact" class="btn-secondary">Get in Touch</a>
+        </div>
+
+        <div class="hero-stats fade-up">
           <div>
-            <strong>Based in</strong>
-            Alpharetta, GA
+            <span class="stat-num">8+</span>
+            <span class="stat-label">Years in Product</span>
           </div>
           <div>
-            <strong>Focus</strong>
-            AI Products · B2B SaaS · Logistics
+            <span class="stat-num">9</span>
+            <span class="stat-label">Countries, Cheetah FMS</span>
+          </div>
+          <div>
+            <span class="stat-num">3</span>
+            <span class="stat-label">AI Tools Shipped</span>
+          </div>
+          <div>
+            <span class="stat-num">UPS SCS</span>
+            <span class="stat-label">Currently at</span>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- ========== ABOUT ========== -->
+    <!-- ABOUT -->
     <section id="about">
       <div class="wrap">
         <p class="section-label">About</p>
         <div class="about-grid">
           <h2>A little about me and how I work.</h2>
-          <div>
+          <div class="about-copy">
             <p>
-              I'm a Product Manager and Senior Business Analyst with 8+ years delivering enterprise-scale system transformations across supply chain, logistics, and finance. At UPS Supply Chain Solutions, I own the AI product strategy for Cheetah FMS — a pan-European fleet management platform operating across 9 countries for enterprise clients including medical device and pharmaceutical companies.
+              I'm a Product Manager and Senior Business Analyst with <strong>8+ years</strong> delivering enterprise-scale system transformations across supply chain, logistics, and finance. At UPS Supply Chain Solutions, I own the AI product strategy for <strong>Cheetah FMS</strong> — a pan-European fleet management platform operating across 9 countries for enterprise clients including medical device and pharmaceutical companies.
             </p>
             <p>
               I specialize in bridging the gap between data science and business outcomes. I've built anomaly detection models into dispatcher workflows, turned gradient boosting outputs into plain-English alerts, and managed cross-functional AI pods spanning data engineers, UX designers, and operations leads. My north star is always the measurable outcome — breach incidents prevented, alert-to-action rates, invoice accuracy.
             </p>
             <p>
-              Before UPS, I led finance transformation at Wells Fargo, drove BI modernization at Genius Sports, and built ERP and data warehouse systems at UV Robots and Optum. I hold an MS in Industrial Engineering from the University of South Florida.
+              Before UPS, I led finance transformation at <strong>Wells Fargo</strong>, drove BI modernization at <strong>Genius Sports</strong>, and built ERP and data warehouse systems at UV Robots and Optum. I hold an MS in Industrial Engineering from the University of South Florida.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== WORK ========== -->
+    <!-- WORK -->
     <section id="work">
       <div class="wrap">
         <p class="section-label">Selected Work</p>
@@ -374,25 +474,25 @@
       </div>
     </section>
 
-    <!-- ========== AI TOOLS ========== -->
+    <!-- AI TOOLS -->
     <section id="ai-tools">
       <div class="wrap">
         <p class="section-label">Built with Claude AI</p>
         <h2>I don't just manage AI products — <em style="font-style:italic; color:var(--accent);">I build them.</em></h2>
-        <p style="color: var(--ink-muted); max-width: 55ch; margin: 0 0 0.5rem;">
+        <p style="color: var(--ink-muted); max-width: 55ch; margin: 0; font-size: 0.95rem; line-height: 1.7;">
           These tools were designed and shipped hands-on using Claude as a development partner — proof that modern PMs can go from idea to working product without a full engineering team.
         </p>
         <div class="ai-tools-grid">
           <a href="https://github.com/kalyansamminga/AI_PRD_Tool-" target="_blank" rel="noopener" class="ai-tool-card">
             <span class="ai-tool-card-label">Product Management</span>
             <span class="ai-tool-card-title">AI PRD Tool</span>
-            <span class="ai-tool-card-desc">Generates structured, stakeholder-ready Product Requirements Documents from a brief using LLM-assisted prompts — cutting PRD drafting time from hours to minutes.</span>
+            <span class="ai-tool-card-desc">Generates structured, stakeholder-ready Product Requirements Documents from a brief — cutting PRD drafting time from hours to minutes.</span>
             <span class="ai-tool-card-link">View on GitHub →</span>
           </a>
           <a href="https://github.com/kalyansamminga/AI_Feature_Prioritization_Tool" target="_blank" rel="noopener" class="ai-tool-card">
             <span class="ai-tool-card-label">Roadmap Planning</span>
-            <span class="ai-tool-card-title">AI Feature Prioritization Tool</span>
-            <span class="ai-tool-card-desc">Applies ICE and RICE scoring frameworks with AI-assisted impact estimation to help product teams cut through opinion and prioritize with data.</span>
+            <span class="ai-tool-card-title">AI Feature Prioritization</span>
+            <span class="ai-tool-card-desc">Applies ICE and RICE scoring with AI-assisted impact estimation to help product teams cut through opinion and prioritize with data.</span>
             <span class="ai-tool-card-link">View on GitHub →</span>
           </a>
           <a href="https://github.com/kalyansamminga/AI_Resume_Assistant_Tool" target="_blank" rel="noopener" class="ai-tool-card">
@@ -405,12 +505,12 @@
       </div>
     </section>
 
-    <!-- ========== CONTACT ========== -->
+    <!-- CONTACT -->
     <section id="contact" class="contact">
       <div class="wrap">
         <p class="section-label">Contact</p>
         <h2>Let's build something together.</h2>
-        <p style="color: var(--ink-muted); max-width: 45ch;">
+        <p style="color: var(--ink-muted); max-width: 45ch; font-size: 0.95rem; line-height: 1.7;">
           I'm open to Product Manager roles in B2B SaaS, logistics technology, and AI-powered platforms. Best way to reach me is email — I usually reply within a day.
         </p>
         <div class="contact-links">
@@ -421,9 +521,9 @@
     </section>
   </main>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer>
-    <div class="wrap" style="display: flex; justify-content: space-between; width: 100%; flex-wrap: wrap; gap: 1rem;">
+    <div class="wrap footer-inner">
       <span>© 2026 Kalyan Samminga</span>
       <span>Built with care.</span>
     </div>
