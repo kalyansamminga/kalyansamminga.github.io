@@ -215,6 +215,58 @@
       border-color: var(--accent);
     }
 
+    /* AI Tools */
+    .ai-tools-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    @media (min-width: 720px) {
+      .ai-tools-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .ai-tool-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .ai-tool-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+    .ai-tool-card-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .ai-tool-card-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .ai-tool-card-desc {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      flex: 1;
+    }
+    .ai-tool-card-link {
+      font-size: 0.85rem;
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      align-self: flex-start;
+      margin-top: 0.5rem;
+    }
+
     /* Footer */
     footer {
       padding: 2rem 0 3rem;
@@ -237,6 +289,7 @@
       <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#work">Work</a>
+        <a href="#ai-tools">AI Tools</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -317,23 +370,36 @@
             <span class="project-desc">Migrated manual Excel reporting to a Snowflake-powered BI environment, reducing manual reporting effort by 60% and enabling real-time revenue variance analysis.</span>
             <span class="project-year">2024</span>
           </a>
-          <a href="https://github.com/kalyansamminga/AI_PRD_Tool-" target="_blank" rel="noopener" class="project">
-            <span class="project-num">05</span>
-            <span class="project-title">AI PRD Tool</span>
-            <span class="project-desc">AI-powered product requirements document generator that helps PMs draft structured, comprehensive PRDs faster using LLM-assisted prompts.</span>
-            <span class="project-year">2025</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== AI TOOLS ========== -->
+    <section id="ai-tools">
+      <div class="wrap">
+        <p class="section-label">Built with Claude AI</p>
+        <h2>I don't just manage AI products — <em style="font-style:italic; color:var(--accent);">I build them.</em></h2>
+        <p style="color: var(--ink-muted); max-width: 55ch; margin: 0 0 0.5rem;">
+          These tools were designed and shipped hands-on using Claude as a development partner — proof that modern PMs can go from idea to working product without a full engineering team.
+        </p>
+        <div class="ai-tools-grid">
+          <a href="https://github.com/kalyansamminga/AI_PRD_Tool-" target="_blank" rel="noopener" class="ai-tool-card">
+            <span class="ai-tool-card-label">Product Management</span>
+            <span class="ai-tool-card-title">AI PRD Tool</span>
+            <span class="ai-tool-card-desc">Generates structured, stakeholder-ready Product Requirements Documents from a brief using LLM-assisted prompts — cutting PRD drafting time from hours to minutes.</span>
+            <span class="ai-tool-card-link">View on GitHub →</span>
           </a>
-          <a href="https://github.com/kalyansamminga/AI_Feature_Prioritization_Tool" target="_blank" rel="noopener" class="project">
-            <span class="project-num">06</span>
-            <span class="project-title">AI Feature Prioritization Tool</span>
-            <span class="project-desc">Intelligent feature scoring and prioritization tool that applies frameworks like ICE and RICE with AI-assisted impact estimation for product roadmap planning.</span>
-            <span class="project-year">2025</span>
+          <a href="https://github.com/kalyansamminga/AI_Feature_Prioritization_Tool" target="_blank" rel="noopener" class="ai-tool-card">
+            <span class="ai-tool-card-label">Roadmap Planning</span>
+            <span class="ai-tool-card-title">AI Feature Prioritization Tool</span>
+            <span class="ai-tool-card-desc">Applies ICE and RICE scoring frameworks with AI-assisted impact estimation to help product teams cut through opinion and prioritize with data.</span>
+            <span class="ai-tool-card-link">View on GitHub →</span>
           </a>
-          <a href="https://github.com/kalyansamminga/AI_Resume_Assistant_Tool" target="_blank" rel="noopener" class="project">
-            <span class="project-num">07</span>
-            <span class="project-title">AI Resume Assistant Tool</span>
-            <span class="project-desc">AI-driven resume tailoring assistant that aligns experience and skills to job descriptions, helping candidates optimize for ATS and recruiter relevance.</span>
-            <span class="project-year">2025</span>
+          <a href="https://github.com/kalyansamminga/AI_Resume_Assistant_Tool" target="_blank" rel="noopener" class="ai-tool-card">
+            <span class="ai-tool-card-label">Career Tools</span>
+            <span class="ai-tool-card-title">AI Resume Assistant</span>
+            <span class="ai-tool-card-desc">Tailors resumes to job descriptions in seconds — aligning skills and impact statements to what recruiters and ATS systems are actually scanning for.</span>
+            <span class="ai-tool-card-link">View on GitHub →</span>
           </a>
         </div>
       </div>
